@@ -2,7 +2,7 @@
 // Mettre à jour cette URL après le déploiement du backend sur Render
 
 // Pour le développement local
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+const API_BASE_URL = 'http://127.0.0.1:8000/api/v1';
 
 // Pour la production (à décommenter après déploiement)
 // const API_BASE_URL = 'https://VOTRE_APP_RENDER.onrender.com/api/v1';

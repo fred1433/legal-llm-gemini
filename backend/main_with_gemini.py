@@ -1,4 +1,4 @@
-# main.py - Production Legal LLM API with Gemini 2.5 Flash Preview
+# main_with_gemini.py - Real Gemini 2.5 Flash Preview Integration
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -59,14 +59,13 @@ app = FastAPI(
     version="2.0.0"
 )
 
-# CORS Configuration - Production ready
+# CORS Configuration
 origins = [
-    "https://*.surge.sh",
-    "https://your-legal-llm.surge.sh",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5500",
     "http://127.0.0.1:5500",
+    "http://localhost:8080",
 ]
 
 app.add_middleware(
@@ -97,7 +96,6 @@ async def root():
         "version": "2.0.0",
         "status": "ready",
         "ai_model": "gemini-2.0-flash-exp",
-        "deployment": "production",
         "endpoints": {
             "docs": "/docs",
             "health": "/health",
@@ -286,10 +284,9 @@ Always remind users to consult with licensed attorneys for specific legal advice
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Production server configuration
+# Server startup
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
     print("🚀 Starting Legal LLM Server with Gemini 2.5 Flash Preview...")
     print("🤖 AI Model: gemini-2.0-flash-exp")
-    print(f"🌐 Running on port {port}")
-    uvicorn.run(app, host="0.0.0.0", port=port) 
+    print("📖 Documentation available at http://127.0.0.1:8000/docs")
+    uvicorn.run(app, host="127.0.0.1", port=8000) 
