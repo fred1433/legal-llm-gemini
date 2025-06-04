@@ -150,36 +150,39 @@ Made in [LOCATION], on [DATE]
 async def legal_search(request: SearchRequest):
     """Performs legal research with RAG (demo version)"""
     
-    # Mock sources
+    # Mock sources based on new English legal documents
     sources = [
         Source(
-            contenu="Employment contracts must comply with labor law provisions. Probationary period cannot exceed 2 months for employees and 4 months for executives.",
+            contenu="Employment contracts should include job title, compensation structure, working hours, probationary period terms, and termination procedures. Probationary periods typically range from 3-6 months for entry-level positions to 12-24 months for executive roles.",
             nom_fichier="employment_law.txt",
             score=0.95
         ),
         Source(
-            contenu="In civil law, contractual liability involves the obligation to repair damage caused by non-performance of a contractual obligation.",
-            nom_fichier="civil_law.txt",
+            contenu="A breach of contract occurs when one party fails to perform contractual obligations. Remedies include compensatory damages, consequential damages, and specific performance. Demand letters should contain clear breach description and reasonable compliance deadlines.",
+            nom_fichier="contract_law.txt",
             score=0.87
         )
     ]
     
-    # Smart mock response
+    # Enhanced smart mock response
     reponse = f"""
 Regarding your question: "{request.question}"
 
-According to current legislation:
+Based on common law principles and legal best practices:
 
-1. **Legal framework**: The applicable provisions are found in the Labor Code and Civil Code depending on the area concerned.
+1. **Legal Framework**: Contract law governs most commercial relationships, with specific employment regulations varying by jurisdiction.
 
-2. **Important points**:
-   - Contractual obligations must be respected
-   - In case of default, sanctions may apply
-   - It is recommended to consult a lawyer for specific cases
+2. **Key Considerations**:
+   - Written agreements provide better legal protection than verbal arrangements
+   - Limitation of liability clauses can protect against excessive damages
+   - Force majeure provisions address extraordinary circumstances
+   - Confidentiality terms protect sensitive business information
 
-3. **Legal references**: This response is based on {len(sources)} relevant source(s) from the legal corpus.
+3. **Professional Recommendation**: For complex legal matters, consult with a qualified attorney familiar with your jurisdiction's specific requirements.
 
-⚠️ **Warning**: This response is generated for demonstration purposes and does not constitute personalized legal advice.
+📚 **Sources**: This response draws from {len(sources)} relevant legal document(s) in our knowledge base.
+
+⚠️ **Disclaimer**: This information is for educational purposes only and does not constitute legal advice.
 """
     
     return SearchResponse(
@@ -195,21 +198,25 @@ According to current legislation:
 async def chat_interaction(request: ChatRequest):
     """Handles interaction with the legal chatbot (demo version)"""
     
-    # Smart responses based on keywords
+    # Enhanced smart responses based on keywords
     message_lower = request.message.lower()
     
-    if any(word in message_lower for word in ['contract', 'employment', 'work']):
-        reponse = "I can help you with employment contracts. A contract must include duration, compensation, and working conditions according to labor law."
-    elif any(word in message_lower for word in ['liability', 'damage', 'compensation']):
-        reponse = "Regarding liability, it's important to distinguish between civil and criminal liability. Civil liability aims to compensate damage, while criminal liability sanctions offenses."
-    elif any(word in message_lower for word in ['probation', 'trial period']):
-        reponse = "The probationary period allows the employer to evaluate the employee. Its maximum duration depends on the position: 2 months for employees, 4 months for executives."
-    elif any(word in message_lower for word in ['hello', 'hi', 'good']):
-        reponse = "Hello! I'm your virtual legal assistant. How can I help you today? I can assist with contracts, legal research, and general legal questions."
-    elif any(word in message_lower for word in ['thank', 'thanks']):
-        reponse = "You're welcome! Don't hesitate to ask if you have other legal questions. I'm here to help."
+    if any(word in message_lower for word in ['contract', 'employment', 'hire', 'job']):
+        reponse = "I can help with employment contracts! Key elements include job description, compensation, working hours, probationary terms, and termination procedures. Would you like me to explain any specific aspect?"
+    elif any(word in message_lower for word in ['nda', 'non-disclosure', 'confidential', 'secret']):
+        reponse = "Non-Disclosure Agreements (NDAs) protect sensitive information. They should define what's confidential, permitted uses, duration of obligations, and consequences for breach. Need help with specific NDA terms?"
+    elif any(word in message_lower for word in ['breach', 'violation', 'damages', 'lawsuit']):
+        reponse = "Contract breaches can be material (major) or minor. Remedies include compensatory damages, consequential damages, or specific performance. The severity determines available legal options."
+    elif any(word in message_lower for word in ['demand', 'letter', 'notice', 'compliance']):
+        reponse = "Demand letters formally request contract compliance. Include: clear breach description, specific remedy requested, reasonable deadline, and consequences of non-compliance. This often resolves disputes without litigation."
+    elif any(word in message_lower for word in ['termination', 'fire', 'quit', 'resign']):
+        reponse = "Employment termination requires proper procedures. At-will employment allows termination without cause, but just-cause termination needs documentation. Notice periods and severance depend on contract terms and local law."
+    elif any(word in message_lower for word in ['hello', 'hi', 'good', 'hey']):
+        reponse = "Hello! I'm your AI legal assistant specializing in contract law, employment matters, and business agreements. I can help explain legal concepts, document structures, and best practices. What legal topic interests you?"
+    elif any(word in message_lower for word in ['thank', 'thanks', 'appreciate']):
+        reponse = "You're very welcome! I'm here to help with any legal questions about contracts, employment law, business agreements, or other legal topics. Feel free to ask anything else!"
     else:
-        reponse = "Thank you for your question. For specific legal advice, I recommend consulting a qualified lawyer. I can provide general information on various legal topics."
+        reponse = f"That's an interesting question about: '{request.message}'. While I can provide general legal information, I recommend consulting with a licensed attorney for specific legal advice tailored to your situation."
     
     # Add to history
     new_historique = request.historique.copy()

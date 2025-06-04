@@ -1,25 +1,45 @@
-DROIT DU TRAVAIL - CONTRATS ET OBLIGATIONS
+EMPLOYMENT LAW - CONTRACTS AND OBLIGATIONS
 
-Article L1221-1 du Code du travail
-Le contrat de travail est soumis aux règles du droit commun. Il peut être établi selon les formes que les parties contractantes décident d'adopter.
+NON-DISCLOSURE AGREEMENT (NDA) BASICS
+A Non-Disclosure Agreement is a legally binding contract that establishes a confidential relationship between parties. The purpose is to protect sensitive information shared during business discussions.
 
-PÉRIODE D'ESSAI
-La période d'essai permet à l'employeur et au salarié d'évaluer si le poste convient. Sa durée maximale est :
-- 2 mois pour les employés et ouvriers
-- 3 mois pour les agents de maîtrise et techniciens  
-- 4 mois pour les cadres
+KEY ELEMENTS OF EMPLOYMENT CONTRACTS
+An employment contract should include:
+- Job title and description of duties
+- Compensation and benefits structure  
+- Working hours and location
+- Probationary period terms
+- Termination procedures and notice requirements
 
-DURÉE DU TRAVAIL
-La durée légale du travail effectif est fixée à 35 heures par semaine pour toutes les entreprises. Au-delà de cette durée, les heures effectuées constituent des heures supplémentaires donnant lieu à majoration.
+PROBATIONARY PERIODS
+Probationary periods allow employers to evaluate new employees. Typical durations:
+- Entry-level positions: 3-6 months
+- Professional roles: 6-12 months
+- Executive positions: 12-24 months
 
-CONGÉS PAYÉS
-Tout salarié a droit à des congés payés à la charge de l'employeur. La durée du congé est de 2,5 jours ouvrables par mois de travail effectif, soit 30 jours ouvrables (5 semaines) pour une année complète.
+WORKING TIME REGULATIONS
+Standard working hours vary by jurisdiction:
+- United States: No federal limit, typically 40 hours/week
+- United Kingdom: Maximum 48 hours/week (EU Working Time Directive)
+- Overtime compensation required for hours exceeding standard limits
 
-RUPTURE DU CONTRAT
-Le contrat de travail peut être rompu à l'initiative de l'employeur (licenciement) ou du salarié (démission). Le licenciement doit être justifié par une cause réelle et sérieuse.
+TERMINATION AND SEVERANCE
+Employment termination must follow proper procedures:
+- At-will employment: Either party may terminate without cause
+- Just cause termination: Requires documented performance issues
+- Severance pay: Often based on length of service
+- Notice periods: Typically 2 weeks to 3 months depending on role
 
-INDEMNITÉS
-En cas de licenciement, le salarié peut avoir droit à :
-- Indemnité de licenciement (si ancienneté ≥ 8 mois)
-- Indemnité compensatrice de préavis
-- Indemnité compensatrice de congés payés 
+WORKPLACE DISCRIMINATION
+Federal laws protect employees from discrimination based on:
+- Race, color, religion, sex, national origin
+- Age (40 and older)
+- Disability status
+- Pregnancy and related conditions
+
+INTELLECTUAL PROPERTY RIGHTS
+Employment agreements often include clauses regarding:
+- Work-for-hire provisions
+- Invention assignment agreements
+- Non-compete and non-solicitation terms
+- Confidentiality obligations 
