@@ -1,0 +1,169 @@
+/* Styles personnalisés pour le prototype LLM Juridique */
+
+/* Chat Messages */
+.chat-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--pico-card-background-color);
+}
+
+.message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--pico-border-radius);
+    line-height: 1.5;
+}
+
+.user-message {
+    background-color: var(--pico-primary-background);
+    color: var(--pico-primary-inverse);
+    margin-left: 2rem;
+    text-align: right;
+}
+
+.assistant-message {
+    background-color: var(--pico-secondary-background);
+    color: var(--pico-secondary-inverse);
+    margin-right: 2rem;
+}
+
+.chat-input {
+    margin-top: 1rem;
+}
+
+/* Document fields */
+.document-fields {
+    background-color: var(--pico-card-background-color);
+    padding: 1.5rem;
+    border-radius: var(--pico-border-radius);
+    border: 1px solid var(--pico-muted-border-color);
+    margin: 1rem 0;
+}
+
+/* Generated document styling */
+#generated-document {
+    background-color: var(--pico-code-background-color);
+    color: var(--pico-code-color);
+    padding: 1.5rem;
+    border-radius: var(--pico-border-radius);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: var(--pico-font-family-monospace);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Sources styling */
+.source-item {
+    background-color: var(--pico-card-background-color);
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.source-header {
+    font-weight: bold;
+    color: var(--pico-primary);
+    margin-bottom: 0.5rem;
+}
+
+.source-content {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.source-score {
+    font-size: 0.8rem;
+    color: var(--pico-muted-color);
+    margin-top: 0.5rem;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Section spacing */
+section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .user-message {
+        margin-left: 1rem;
+    }
+    
+    .assistant-message {
+        margin-right: 1rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #generated-document {
+        font-size: 0.8rem;
+    }
+}
+
+/* Button enhancements */
+button[onclick] {
+    margin-top: 1rem;
+    background-color: var(--pico-secondary);
+    border-color: var(--pico-secondary);
+}
+
+button[onclick]:hover {
+    background-color: var(--pico-secondary-hover);
+    border-color: var(--pico-secondary-hover);
+}
+
+/* Result sections */
+#generation-result,
+#research-result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--pico-card-background-color);
+    border-radius: var(--pico-border-radius);
+    border: 1px solid var(--pico-muted-border-color);
+}
+
+/* Form enhancements */
+form {
+    background-color: var(--pico-card-background-color);
+    padding: 1.5rem;
+    border-radius: var(--pico-border-radius);
+    border: 1px solid var(--pico-muted-border-color);
+}
+
+/* Typography improvements */
+pre {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Animation for loading states */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+[id$="-loading"] {
+    animation: pulse 1.5s infinite;
+} 

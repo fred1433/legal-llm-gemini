@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal LLM Prototype</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong>🏛️ Legal LLM</strong></li>
+            </ul>
+            <ul>
+                <li><small>AI Legal Assistant Prototype</small></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Introduction Section -->
+        <section>
+            <hgroup>
+                <h1>AI Legal Assistant</h1>
+                <p>Demonstration of Large Language Model capabilities for legal tasks</p>
+            </hgroup>
+            
+            <div class="grid">
+                <div>
+                    <article>
+                        <header><strong>📄 Document Generation</strong></header>
+                        <p>Automatic creation of contracts, demand letters and other legal documents</p>
+                    </article>
+                </div>
+                <div>
+                    <article>
+                        <header><strong>🔍 Legal Research</strong></header>
+                        <p>Semantic search in a legal knowledge base with RAG</p>
+                    </article>
+                </div>
+                <div>
+                    <article>
+                        <header><strong>💬 Virtual Assistant</strong></header>
+                        <p>Interactive chat for personalized legal advice</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Document Generation -->
+        <section id="generation-section">
+            <h2>📄 Legal Document Generation</h2>
+            
+            <form id="generation-form">
+                <div class="grid">
+                    <div>
+                        <label for="type-document">Document type:</label>
+                        <select id="type-document" name="type-document" required>
+                            <option value="">Choose a type...</option>
+                            <option value="contrat">Employment Contract</option>
+                            <option value="mise_en_demeure">Demand Letter</option>
+                            <option value="courrier_formel">Formal Letter</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contract specific fields -->
+                <div id="contrat-fields" class="document-fields" style="display: none;">
+                    <div class="grid">
+                        <div>
+                            <label for="employeur">Employer name:</label>
+                            <input type="text" id="employeur" name="employeur" placeholder="ABC Company">
+                        </div>
+                        <div>
+                            <label for="employe">Employee name:</label>
+                            <input type="text" id="employe" name="employe" placeholder="John Doe">
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div>
+                            <label for="poste">Position:</label>
+                            <input type="text" id="poste" name="poste" placeholder="Developer">
+                        </div>
+                        <div>
+                            <label for="salaire">Salary ($):</label>
+                            <input type="number" id="salaire" name="salaire" placeholder="50000">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="duree">Contract duration:</label>
+                        <select id="duree" name="duree">
+                            <option value="permanent">Permanent</option>
+                            <option value="temporary">Temporary</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Demand letter specific fields -->
+                <div id="mise_en_demeure-fields" class="document-fields" style="display: none;">
+                    <div class="grid">
+                        <div>
+                            <label for="expediteur">Sender:</label>
+                            <input type="text" id="expediteur" name="expediteur" placeholder="Law Firm">
+                        </div>
+                        <div>
+                            <label for="destinataire">Recipient:</label>
+                            <input type="text" id="destinataire" name="destinataire" placeholder="XYZ Company">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="objet">Subject of demand:</label>
+                        <input type="text" id="objet" name="objet" placeholder="Payment of unpaid invoice">
+                    </div>
+                    <div>
+                        <label for="delai">Deadline (days):</label>
+                        <input type="number" id="delai" name="delai" value="15" min="1" max="60">
+                    </div>
+                </div>
+
+                <button type="submit" id="generate-btn">
+                    <span id="generate-text">Generate Document</span>
+                    <span id="generate-loading" style="display: none;">Generating...</span>
+                </button>
+            </form>
+
+            <div id="generation-result" style="display: none;">
+                <h3>Generated Document:</h3>
+                <article>
+                    <pre id="generated-document"></pre>
+                </article>
+                <button onclick="copyToClipboard('generated-document')">📋 Copy</button>
+            </div>
+        </section>
+
+        <!-- Section 2: Legal Research -->
+        <section id="research-section">
+            <h2>🔍 Legal Research (RAG)</h2>
+            
+            <form id="research-form">
+                <div>
+                    <label for="legal-question">Your legal question:</label>
+                    <textarea id="legal-question" name="legal-question" rows="3" 
+                              placeholder="e.g., What is the maximum duration of a probationary period for executives?" required></textarea>
+                </div>
+                
+                <button type="submit" id="research-btn">
+                    <span id="research-text">Search</span>
+                    <span id="research-loading" style="display: none;">Searching...</span>
+                </button>
+            </form>
+
+            <div id="research-result" style="display: none;">
+                <h3>Answer:</h3>
+                <article id="research-answer"></article>
+                
+                <h4>Sources consulted:</h4>
+                <div id="research-sources"></div>
+            </div>
+        </section>
+
+        <!-- Section 3: Chat Assistant -->
+        <section id="chat-section">
+            <h2>💬 Virtual Legal Assistant</h2>
+            
+            <div id="chat-container">
+                <div id="chat-messages" class="chat-messages">
+                    <div class="message assistant-message">
+                        <strong>Assistant:</strong> Hello! I'm your virtual legal assistant. How can I help you today?
+                    </div>
+                </div>
+                
+                <form id="chat-form" class="chat-input">
+                    <div class="grid">
+                        <div>
+                            <input type="text" id="chat-input" name="chat-input" 
+                                   placeholder="Type your legal question..." required>
+                        </div>
+                        <div style="width: auto;">
+                            <button type="submit" id="chat-btn">
+                                <span id="chat-text">Send</span>
+                                <span id="chat-loading" style="display: none;">...</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <hr>
+        <p><small>
+            <strong>Legal LLM Prototype</strong> - Version 1.0.0<br>
+            ⚠️ <em>This demonstration is for illustrative purposes only. Generated responses do not constitute legal advice.</em>
+        </small></p>
+    </footer>
+
+    <script src="js/api_config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

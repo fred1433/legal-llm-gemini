@@ -1,0 +1,27 @@
+DROIT CIVIL - RESPONSABILITÉ ET OBLIGATIONS CONTRACTUELLES
+
+RESPONSABILITÉ CONTRACTUELLE
+Article 1231-1 du Code civil : Le débiteur est condamné, s'il y a lieu, au paiement de dommages et intérêts soit à raison de l'inexécution de l'obligation, soit à raison du retard dans l'exécution.
+
+CONDITIONS DE LA RESPONSABILITÉ
+Pour que la responsabilité contractuelle soit engagée, trois conditions doivent être réunies :
+1. Un contrat valablement formé
+2. L'inexécution d'une obligation contractuelle
+3. Un préjudice résultant de cette inexécution
+
+MISE EN DEMEURE
+La mise en demeure est l'acte par lequel le créancier demande au débiteur d'exécuter son obligation. Elle peut être faite par :
+- Lettre recommandée avec accusé de réception
+- Acte d'huissier
+- Tout moyen permettant de justifier de sa réception
+
+DOMMAGES ET INTÉRÊTS
+Les dommages-intérêts dus au créancier sont en général égaux à la perte qu'il a faite et au gain dont il a été privé. Ils doivent être :
+- Directs et certains
+- Prévisibles au moment de la conclusion du contrat
+
+PRESCRIPTION
+L'action en responsabilité contractuelle se prescrit par 5 ans à compter du jour où le titulaire d'un droit a connu ou aurait dû connaître les faits lui permettant de l'exercer.
+
+CLAUSES LIMITATIVES
+Les parties peuvent insérer dans le contrat des clauses limitant ou excluant la responsabilité, mais ces clauses ne peuvent porter sur les dommages causés aux personnes. 
