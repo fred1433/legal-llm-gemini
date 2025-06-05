@@ -67,7 +67,7 @@ app = FastAPI(
 
 # CORS Configuration - Production ready
 origins = [
-    "https://legal-llm-ai.surge.sh",
+    "https://legal-llm-fred-final.surge.sh",  # ✅ CORRECT URL
     "https://*.surge.sh",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -77,8 +77,8 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Temporary pour debug - plus permissif
-    allow_credentials=False,  # False avec origins=["*"]
+    allow_origins=origins,  # ✅ Utilise la liste spécifique au lieu de ["*"]
+    allow_credentials=True,  # ✅ Peut maintenant être True avec origins spécifiques
     allow_methods=["*"],
     allow_headers=["*"],
 )
