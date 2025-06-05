@@ -13,8 +13,14 @@ import time
 # Load environment variables
 load_dotenv()
 
-# Configure Gemini
-genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
+# Configure Gemini - Support multiple env var names
+api_key = os.getenv('GOOGLE_API_KEY') or os.getenv('GEMINI_API_KEY')
+if not api_key:
+    print("❌ Error: No API key found. Set GOOGLE_API_KEY or GEMINI_API_KEY")
+else:
+    print(f"✅ API key loaded: {api_key[:10]}...")
+    
+genai.configure(api_key=api_key)
 
 # Pydantic models
 class DocumentRequest(BaseModel):
@@ -54,15 +60,15 @@ class ChatResponse(BaseModel):
 
 # FastAPI Application
 app = FastAPI(
-    title="🏛️ Legal LLM API - Gemini Powered",
-    description="AI Legal Assistant powered by Gemini 2.5 Flash Preview",
+    title="🏛️ Legal LLM API - Gemini 2.5 Flash Preview",
+    description="AI Legal Assistant powered by Gemini 2.5 Flash Preview-0520",
     version="2.0.0"
 )
 
 # CORS Configuration - Production ready
 origins = [
+    "https://legal-llm-ai.surge.sh",
     "https://*.surge.sh",
-    "https://your-legal-llm.surge.sh",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5500",
@@ -71,14 +77,14 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],  # Temporary pour debug - plus permissif
+    allow_credentials=False,  # False avec origins=["*"]
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Gemini model configuration
-model = genai.GenerativeModel('gemini-2.0-flash-exp')
+model = genai.GenerativeModel('gemini-2.5-flash-preview-05-20')
 
 async def call_gemini(prompt: str) -> str:
     """Call Gemini API with error handling"""
@@ -96,7 +102,7 @@ async def root():
         "message": "🏛️ Legal LLM API active - Powered by Gemini 2.5 Flash Preview",
         "version": "2.0.0",
         "status": "ready",
-        "ai_model": "gemini-2.0-flash-exp",
+        "ai_model": "gemini-2.5-flash-preview-05-20",
         "deployment": "production",
         "endpoints": {
             "docs": "/docs",
@@ -109,7 +115,7 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "service": "legal-llm-gemini", "ai_model": "gemini-2.0-flash-exp"}
+    return {"status": "healthy", "service": "legal-llm-gemini", "ai_model": "gemini-2.5-flash-preview-05-20"}
 
 # Document generation with real Gemini
 @app.post("/api/v1/generate-document", response_model=DocumentResponse)
@@ -290,6 +296,6 @@ Always remind users to consult with licensed attorneys for specific legal advice
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     print("🚀 Starting Legal LLM Server with Gemini 2.5 Flash Preview...")
-    print("🤖 AI Model: gemini-2.0-flash-exp")
+    print("🤖 AI Model: gemini-2.5-flash-preview-05-20")
     print(f"🌐 Running on port {port}")
     uvicorn.run(app, host="0.0.0.0", port=port) 
