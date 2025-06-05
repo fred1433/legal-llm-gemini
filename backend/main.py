@@ -61,7 +61,7 @@ class ChatResponse(BaseModel):
 # FastAPI Application
 app = FastAPI(
     title="🏛️ Legal LLM API - Gemini 2.5 Flash Preview",
-    description="AI Legal Assistant powered by Gemini 2.5 Flash Preview-0520",
+    description="AI Legal Assistant powered by Gemini 2.5 Flash Preview-05-20",
     version="2.0.0"
 )
 
