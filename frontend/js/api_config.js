@@ -1,5 +1,5 @@
 // Configuration de l'API Backend
-// Mettre à jour cette URL après le déploiement du backend sur Render
+// Mettre à jour cette URL après le déploiement du backend sur Railway
 
 // Détection automatique environnement
 const isLocalhost = window.location.hostname === 'localhost' || 
@@ -8,7 +8,7 @@ const isLocalhost = window.location.hostname === 'localhost' ||
 
 // URLs de configuration
 const LOCAL_API_URL = 'http://127.0.0.1:8000/api/v1';
-const PRODUCTION_API_URL = 'https://legal-llm-gemini.onrender.com/api/v1';
+const PRODUCTION_API_URL = 'https://legal-llm-gemini-production.up.railway.app/api/v1';
 
 // Auto-sélection URL basée sur l'environnement
 const API_BASE_URL = isLocalhost ? LOCAL_API_URL : PRODUCTION_API_URL;
