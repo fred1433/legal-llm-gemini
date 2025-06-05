@@ -68,6 +68,7 @@ app = FastAPI(
 # CORS Configuration - Production ready
 origins = [
     "https://legal-llm-fred-final.surge.sh",  # ✅ CORRECT URL
+    "https://legal-llm-fresh-deploy.surge.sh",  # ✅ NOUVEAU DOMAINE
     "https://*.surge.sh",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
