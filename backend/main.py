@@ -68,8 +68,10 @@ app = FastAPI(
 # CORS Configuration - Production ready
 origins = [
     "https://legal-llm-fred-final.surge.sh",  # ✅ CORRECT URL
-    "https://legal-llm-fresh-deploy.surge.sh",  # ✅ NOUVEAU DOMAINE
+    "https://legal-llm-fresh-deploy.surge.sh",  # ✅ NOUVEAU DOMAINE  
+    "https://chic-pie-119215.netlify.app",  # ✅ NETLIFY PRODUCTION
     "https://*.surge.sh",
+    "https://*.netlify.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5500",
